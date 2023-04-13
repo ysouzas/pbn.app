@@ -1,22 +1,28 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PBN.APP.View.MainPage"
+             x:Class="PBN.APP.View.TeamsPage"
              xmlns:viewmodel="clr-namespace:PBN.APP.ViewModel"
-             x:DataType="viewmodel:PlayersViewModel"
+             x:DataType="viewmodel:TeamsViewModel"
              Title="{Binding Title}"
-             xmlns:model="clr-namespace:PBN.Models;assembly=PBN.Models">
+            xmlns:model="clr-namespace:PBN.Models;assembly=PBN.Models">
 
     <Grid  ColumnDefinitions="*,*"
             ColumnSpacing="5"
             RowDefinitions="*,Auto"
             RowSpacing="0">
 
+        <SearchBar x:Name="filterText"
+               HeightRequest="40"
+               Placeholder="Search here to filter"
+               />
+        
         <CollectionView BackgroundColor="Transparent"
                         Grid.ColumnSpan="2"
                         ItemsSource="{Binding Players}"
                         SelectionMode="Multiple"
                         SelectedItems="{Binding SelectedPlayers}"
+                        
                         >
 
             <CollectionView.ItemTemplate>
@@ -44,6 +50,19 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+
+        <Button Text="Get Teams"
+                Command="{Binding GenerateTeamsCommand}"
+                IsEnabled="{Binding IsNotLoading}"
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="8"/>
+
+        <Button Text="{Binding SelectedPlayers.Count}"
+                IsEnabled="False"
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="8"/>
 
         <ActivityIndicator IsVisible="{Binding IsLoading}" 
                            IsRunning="{Binding IsLoading}"

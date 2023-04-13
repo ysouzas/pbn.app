@@ -1,15 +1,16 @@
 ﻿using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.Input;
+using PBN.APP.Services;
 using PBN.APP.Services.Interfaces;
 using PBN.APP.ViewModel.Base;
 using PBN.Models;
 
 namespace PBN.APP.ViewModel;
 
-public partial class PlayersViewModel : BaseViewModel
+public partial class TeamsViewModel : BaseViewModel
 {
+    private readonly ITeamService _teamService;
     private readonly IPlayerService _playerService;
-
 
     public ObservableCollection<Player> Players { get; } = new();
 
@@ -30,11 +31,12 @@ public partial class PlayersViewModel : BaseViewModel
         }
     }
 
-    public PlayersViewModel(IPlayerService playerService)
+    public TeamsViewModel(ITeamService teamService, IPlayerService playerService)
     {
-        _playerService = playerService;
-        Title = "Players";
+        Title = "Teams";
         SelectedPlayers = new ObservableCollection<object>();
+        _teamService = teamService;
+        _playerService = playerService;
     }
 
     [RelayCommand]
@@ -67,4 +69,36 @@ public partial class PlayersViewModel : BaseViewModel
             IsLoading = false;
         }
     }
+
+    [RelayCommand]
+    async Task GenerateTeams()
+    {
+        if (IsLoading) return;
+
+        try
+        {
+            IsLoading = true;
+            var ids = SelectedPlayers.Select(sp => ((Player)sp).Id).ToList();
+
+            var teams = await _teamService.GenerateTeams(ids);
+            var teamsToPrint = _teamService.GetTeamsAsString(teams);
+
+            await Share.Default.RequestAsync(new ShareTextRequest
+            {
+                Text = teamsToPrint,
+                Title = "Share Text"
+            });
+        }
+        catch (Exception ex)
+        {
+            await Shell.Current.DisplayAlert("Error!", $"Unable to get players: {ex.Message}", "OK");
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+
+
+
 }

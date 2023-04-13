@@ -6,10 +6,20 @@
     xmlns:view="clr-namespace:PBN.APP.View"
     Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent
-        Shell.NavBarIsVisible="True"
-        Title="PBN"
-        ContentTemplate="{DataTemplate view:MainPage}"
-        Route="MainPage" />
 
+    <TabBar x:Name="Tab">
+
+        <Tab Title="Players">
+            <ShellContent
+                Shell.NavBarIsVisible="True"
+                ContentTemplate="{DataTemplate view:MainPage}"
+                Route="MainPage" />
+        </Tab>
+        <Tab Title="Teams">
+            <ShellContent
+                Shell.NavBarIsVisible="True"
+                ContentTemplate="{DataTemplate view:TeamsPage}"
+                Route="MainPage" />
+        </Tab>
+    </TabBar>
 </Shell>

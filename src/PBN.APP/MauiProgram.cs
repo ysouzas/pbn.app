@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using PBN.APP.Configuration;
 using PBN.APP.Services;
 using PBN.APP.View;
 using PBN.APP.ViewModel;
@@ -22,10 +23,11 @@ public static class MauiProgram
         builder.Logging.AddDebug();
 #endif
 
+        builder.Services.RegisterData();
+        builder.Services.RegisterServices();
+        builder.Services.RegisterViewModels();
+        builder.Services.RegisterPages();
 
-        builder.Services.AddSingleton<PlayerService>();
-        builder.Services.AddSingleton<PlayersViewModel>();
-        builder.Services.AddSingleton<MainPage>();
 
         return builder.Build();
     }
