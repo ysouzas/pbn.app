@@ -24,7 +24,7 @@
                     <Grid Padding ="10">
                         <Border HeightRequest="125"
                                Padding="0"
-                                Style="{StaticResource CardView}">
+                                >
                             <Grid Padding="0"
                                   ColumnDefinitions="125,*">
                                 <Image Aspect="AspectFill" Source="{Binding Image}"
@@ -33,8 +33,8 @@
                                 <VerticalStackLayout Grid.Column="1"
                                                      Padding="10"
                                                      VerticalOptions="Center">
-                                    <Label Text="{Binding Name}" Style="{StaticResource LargeLabel}" />
-                                    <Label Text="{Binding Score}" Style="{StaticResource MediumLabel}"/>
+                                    <Label Text="{Binding Name}"  />
+                                    <Label Text="{Binding Score}" />
 
                                 </VerticalStackLayout>
                             </Grid>
@@ -45,8 +45,7 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <Button Text="Get Players"
-                Style="{StaticResource ButtonOutline}"
+        <Button Text="Get Teams"
                 Command="{Binding GenerateTeamsCommand}"
                 IsEnabled="{Binding IsNotLoading}"
                 Grid.Row="1"
@@ -54,7 +53,6 @@
                 Margin="8"/>
 
         <Button Text="{Binding SelectedPlayers.Count}"
-                Style="{StaticResource ButtonOutline}"
                 IsEnabled="False"
                 Grid.Row="1"
                 Grid.Column="1"

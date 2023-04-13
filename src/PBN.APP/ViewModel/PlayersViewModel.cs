@@ -90,10 +90,10 @@ public partial class PlayersViewModel : BaseViewModel
 
                 foreach (var player in team.Players)
                 {
-                    teamsToPrint += "{player.Name} - {player.Score:0.00}\n";
+                    teamsToPrint += $"{player.Name} - {player.Score:0.00}\n";
 
                 }
-                teamsToPrint += "-------------------------------------\n";
+                teamsToPrint += "-----------------------------------\n";
             }
 
 
