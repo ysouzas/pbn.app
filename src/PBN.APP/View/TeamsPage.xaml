@@ -7,23 +7,23 @@
              Title="{Binding Title}"
             xmlns:model="clr-namespace:PBN.Models;assembly=PBN.Models">
 
-    <Grid  ColumnDefinitions="*,*"
-            ColumnSpacing="5"
-            RowDefinitions="*,Auto"
-            RowSpacing="0">
-
-        <SearchBar x:Name="filterText"
+    <StackLayout>
+        <VerticalStackLayout>
+            <SearchBar x:Name="filterText"
                HeightRequest="40"
-               Placeholder="Search here to filter"
-               />
-        
+               Placeholder="Search here to filter"/>
+        </VerticalStackLayout>
+
+        <ActivityIndicator IsVisible="{Binding IsLoading}" 
+                           IsRunning="{Binding IsLoading}"
+                           HorizontalOptions="FillAndExpand" 
+                           VerticalOptions="CenterAndExpand"/>
+
         <CollectionView BackgroundColor="Transparent"
-                        Grid.ColumnSpan="2"
+                        VerticalOptions="FillAndExpand"
                         ItemsSource="{Binding Players}"
                         SelectionMode="Multiple"
-                        SelectedItems="{Binding SelectedPlayers}"
-                        
-                        >
+                        SelectedItems="{Binding SelectedPlayers}">
 
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Player">
@@ -51,25 +51,23 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <Button Text="Get Teams"
-                Command="{Binding GenerateTeamsCommand}"
-                IsEnabled="{Binding IsNotLoading}"
-                Grid.Row="1"
-                Grid.Column="0"
-                Margin="8"/>
+        <Grid  ColumnDefinitions="*,*"
+               ColumnSpacing="5"
+               RowDefinitions="*,Auto"
+               RowSpacing="0">
 
-        <Button Text="{Binding SelectedPlayers.Count}"
-                IsEnabled="False"
-                Grid.Row="1"
-                Grid.Column="1"
-                Margin="8"/>
+            <Button Text="Get Teams"
+                    Command="{Binding GenerateTeamsCommand}"
+                    IsEnabled="{Binding IsNotLoading}"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Margin="8"/>
 
-        <ActivityIndicator IsVisible="{Binding IsLoading}" 
-                           IsRunning="{Binding IsLoading}"
-                           HorizontalOptions="FillAndExpand" 
-                           VerticalOptions="CenterAndExpand"
-                           Grid.RowSpan="2"
-                           Grid.ColumnSpan="2"/>
-    </Grid>
-
+            <Button Text="{Binding SelectedPlayers.Count}"
+                    IsEnabled="False"
+                    Margin="8"
+                    Grid.Row="1"
+                    Grid.Column="1"/>
+        </Grid>
+    </StackLayout>
 </ContentPage>
