@@ -5,7 +5,11 @@
         public static string BaseUrl { get; } = string.Empty;
 
         public static string TeamUrl { get; } = $"{BaseUrl}/teams";
+
         public static string PlayerUrl { get; } = $"{BaseUrl}/football_functions";
 
+        public static string RankUrl { get; } = $"{BaseUrl}/player";
+
+        public static string AddRankUrl { get; } = $"{BaseUrl}/rank";
     }
 }

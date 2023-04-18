@@ -15,7 +15,7 @@
         <CollectionView BackgroundColor="Transparent"
                         Grid.ColumnSpan="2"
                         ItemsSource="{Binding Players}"
-                        SelectionMode="Multiple"
+                        SelectionMode="None"
                         SelectedItems="{Binding SelectedPlayers}"
                         >
 
@@ -25,6 +25,13 @@
                         <Border HeightRequest="125"
                                Padding="0"
                                 >
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="{Binding .}"
+                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:PlayersViewModel}}, Path=GoToPlayerCommand}"/>
+
+
+
+                            </Border.GestureRecognizers>
                             <Grid Padding="0"
                                   ColumnDefinitions="125,*">
                                 <Image Aspect="AspectFill" Source="{Binding Image}"

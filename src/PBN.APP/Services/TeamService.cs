@@ -13,7 +13,7 @@ public class TeamService : ITeamService
         this.repository = repository;
     }
 
-    public async Task<Team[]> GenerateTeams(List<string> ids)
+    public async Task<Team[]> GenerateTeams(List<Guid> ids)
     {
         var teams = await repository.GenerateTeams(ids);
         return teams;

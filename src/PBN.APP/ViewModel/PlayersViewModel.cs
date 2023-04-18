@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.Input;
 using PBN.APP.Services.Interfaces;
+using PBN.APP.View;
 using PBN.APP.ViewModel.Base;
 using PBN.Models;
 
@@ -36,6 +37,22 @@ public partial class PlayersViewModel : BaseViewModel
         Title = "Players";
         SelectedPlayers = new ObservableCollection<object>();
     }
+
+
+    [RelayCommand]
+    async Task GoToPlayer(Player player)
+    {
+        if (player is null)
+            return;
+
+        Dictionary<string, object> parameters = new()
+        {
+            { "Player", player }
+        };
+
+        await Shell.Current.GoToAsync($"{nameof(PlayerPage)}", true, parameters);
+    }
+
 
     [RelayCommand]
     async Task GetPlayers()

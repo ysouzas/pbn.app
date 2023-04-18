@@ -1,4 +1,5 @@
 ﻿using PBN.APP.Data.Interfaces;
+using PBN.APP.DTO.Request;
 using PBN.APP.Services.Interfaces;
 using PBN.Models;
 
@@ -15,16 +16,24 @@ public class PlayerService : IPlayerService
         this.repository = repository;
     }
 
+    public async Task<Player> AddRank(AddRankDTO dto)
+    {
+        var player = await repository.AddRank(dto);
+
+        return player;
+    }
+
     public async Task<Player[]> GetAll()
     {
-        if (_players.Length > 0)
-        {
-            return _players;
-        }
-
         _players = await repository.GetAll();
 
         return _players;
     }
 
+    public async Task<Player> GetPlayerWithRank(Guid id)
+    {
+        var player = await repository.GetPlayerWithRank(id);
+
+        return player;
+    }
 }

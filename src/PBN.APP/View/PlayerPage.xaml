@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PBN.APP.View.PlayerPage"
+             xmlns:viewmodel="clr-namespace:PBN.APP.ViewModel"
+             x:DataType="viewmodel:PlayerViewModel"
+             Title="{Binding Player.Name}"
+             xmlns:model="clr-namespace:PBN.Models;assembly=PBN.Models">
+
+    <StackLayout>
+        <VerticalStackLayout>
+            <Label 
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    Text="{Binding Player.Name}" 
+                    HorizontalOptions="Center"
+                    Margin="0,0,0,8"/>
+
+            <Entry x:Name="rank"
+                   Placeholder="Add new Rank"
+                   Keyboard="Numeric"
+                   Text="{Binding Score}"
+                   />
+
+            <Button Text="Add Rank" 
+                        HorizontalOptions="Center" 
+                        WidthRequest="200" 
+                        Margin="8"
+                        Command="{Binding SendScoreCommand}"
+                       />
+        </VerticalStackLayout>
+
+        <ActivityIndicator IsVisible="{Binding IsLoading}" 
+                           IsRunning="{Binding IsLoading}"
+                           HorizontalOptions="FillAndExpand" 
+                           VerticalOptions="CenterAndExpand"/>
+
+        <CollectionView BackgroundColor="Transparent"
+                        Grid.ColumnSpan="2"
+                        ItemsSource="{Binding Player.Ranks}"
+                        SelectionMode="None"
+                        VerticalOptions="FillAndExpand"                        
+                        >
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Rank">
+                    <Grid Padding ="10">
+                        <Border HeightRequest="125"
+                               Padding="0"
+                                >
+                            <Grid Padding="0">
+                                <VerticalStackLayout Grid.Column="1"
+                                                     Padding="10"
+                                                     VerticalOptions="Center">
+                                    <Label Text="{Binding Score, StringFormat='Score: {0}'}" />
+                                    <Label Text="{Binding Date, StringFormat='Date: {0}'}" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <ActivityIndicator IsVisible="{Binding IsLoading}" 
+                           IsRunning="{Binding IsLoading}"
+                           HorizontalOptions="FillAndExpand" 
+                           VerticalOptions="CenterAndExpand"
+                           Grid.RowSpan="2"
+                           Grid.ColumnSpan="2"/>
+    </StackLayout>
+</ContentPage>

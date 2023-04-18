@@ -1,8 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 using PBN.APP.Configuration;
-using PBN.APP.Services;
-using PBN.APP.View;
-using PBN.APP.ViewModel;
 
 namespace PBN.APP;
 

@@ -13,7 +13,6 @@ public static class DependecyInjetionConfiguration
     {
         services.AddScoped<ITeamRepository, TeamRepository>();
         services.AddScoped<IPlayerRepository, PlayerRepository>();
-
     }
 
     public static void RegisterServices(this IServiceCollection services)
@@ -26,6 +25,8 @@ public static class DependecyInjetionConfiguration
     {
         services.AddSingleton<PlayersViewModel>();
         services.AddSingleton<TeamsViewModel>();
+        services.AddTransient<PlayerViewModel>();
+
     }
 
 
@@ -33,6 +34,7 @@ public static class DependecyInjetionConfiguration
     {
         services.AddSingleton<MainPage>();
         services.AddSingleton<TeamsPage>();
+        services.AddTransient<PlayerPage>();
 
     }
 }
