@@ -11,5 +11,8 @@
         public static string RankUrl { get; } = $"{BaseUrl}/player";
 
         public static string AddRankUrl { get; } = $"{BaseUrl}/rank";
+
+        public static string AddPlayer { get; } = $"{BaseUrl}/addPlayer";
+
     }
 }

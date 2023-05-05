@@ -10,6 +10,6 @@ public class Player
 
     public string Image { get; set; } = string.Empty;
 
-    public Rank[] Ranks { get; set; } = Array.Empty<Rank>();
+    public Rank[]? Ranks { get; set; } = Array.Empty<Rank>();
 
 }

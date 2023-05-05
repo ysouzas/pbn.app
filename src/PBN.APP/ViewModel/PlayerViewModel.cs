@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using PBN.APP.DTO.Request;
 using PBN.APP.Services.Interfaces;
+using PBN.APP.View;
 using PBN.APP.ViewModel.Base;
 using PBN.Models;
 
@@ -18,6 +19,12 @@ public partial class PlayerViewModel : BaseViewModel
     [ObservableProperty]
     decimal score;
 
+    [ObservableProperty]
+    string name;
+
+    [ObservableProperty]
+    bool isVisible = true;
+
     public PlayerViewModel()
     {
     }
@@ -30,12 +37,20 @@ public partial class PlayerViewModel : BaseViewModel
     [RelayCommand]
     private async Task GetRanks()
     {
+        if (Player is null)
+        {
+            return;
+        }
+
+        IsVisible = false;
+
         if (IsLoading) return;
 
         try
         {
             IsLoading = true;
             Player = await _playerService.GetPlayerWithRank(Player.Id);
+            Score = 0;
         }
         catch (Exception ex)
         {
@@ -56,9 +71,29 @@ public partial class PlayerViewModel : BaseViewModel
         try
         {
             IsLoading = true;
-            var rank = new Rank(Score);
-            var dto = new AddRankDTO { Id = Player.Id, Rank = rank };
-            Player = await _playerService.AddRank(dto);
+
+            if (Player is not null)
+            {
+                var rank = new Rank(Score);
+                var dto = new AddRankDTO { Id = Player.Id, Rank = rank };
+                Player = await _playerService.AddRank(dto);
+                Score = 0;
+            }
+            else
+            {
+                var dto = new AddPlayerDTO { Name = Name, Score = Score };
+
+                var player = await _playerService.AddPlayer(dto);
+
+                Dictionary<string, object> parameters = new() { { "Player", player } };
+
+                await Shell.Current.GoToAsync($"{nameof(PlayerPage)}", true, parameters);
+
+                Name = "";
+                Score = 0;
+            }
+
+
         }
         catch (Exception ex)
         {

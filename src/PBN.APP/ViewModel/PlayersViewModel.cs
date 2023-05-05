@@ -53,6 +53,12 @@ public partial class PlayersViewModel : BaseViewModel
         await Shell.Current.GoToAsync($"{nameof(PlayerPage)}", true, parameters);
     }
 
+    [RelayCommand]
+    async Task AddPlayer()
+    {
+        await Shell.Current.GoToAsync($"{nameof(PlayerPage)}", true);
+    }
+
 
     [RelayCommand]
     async Task GetPlayers()

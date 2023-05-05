@@ -9,4 +9,7 @@ public interface IPlayerRepository : IRepository<Player>
 
     Task<Player> AddRank(AddRankDTO dto);
 
+    Task<Player> AddPlayer(AddPlayerDTO dto);
+
+    
 }

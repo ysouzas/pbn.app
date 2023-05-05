@@ -16,6 +16,13 @@ public class PlayerService : IPlayerService
         this.repository = repository;
     }
 
+    public async Task<Player> AddPlayer(AddPlayerDTO dto)
+    {
+        var player = await repository.AddPlayer(dto);
+
+        return player;
+    }
+
     public async Task<Player> AddRank(AddRankDTO dto)
     {
         var player = await repository.AddRank(dto);

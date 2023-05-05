@@ -10,4 +10,7 @@ public interface IPlayerService : IService<Player>
     Task<Player> GetPlayerWithRank(Guid id);
 
     Task<Player> AddRank(AddRankDTO dto);
+
+    Task<Player> AddPlayer(AddPlayerDTO dto);
+
 }

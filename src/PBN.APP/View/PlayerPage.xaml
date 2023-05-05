@@ -16,6 +16,13 @@
                     HorizontalOptions="Center"
                     Margin="0,0,0,8"/>
 
+            <Entry x:Name="name"
+                   Placeholder="Add new name"
+                   Keyboard="Text"
+                   IsVisible="{Binding IsVisible}"
+                   Text="{Binding Name}"
+                   />
+            
             <Entry x:Name="rank"
                    Placeholder="Add new Rank"
                    Keyboard="Numeric"
