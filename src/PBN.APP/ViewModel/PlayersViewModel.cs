@@ -90,4 +90,34 @@ public partial class PlayersViewModel : BaseViewModel
             IsLoading = false;
         }
     }
+
+    [RelayCommand]
+    async Task Ranking()
+    {
+        if (IsLoading) return;
+
+        try
+        {
+            IsLoading = true;
+            var ranking = await _playerService.GetRanking();
+
+            await Share.Default.RequestAsync(new ShareTextRequest
+            {
+                Text = ranking,
+                Title = "Share Text"
+            });
+        }
+        catch (Exception ex)
+        {
+            await Shell.Current.DisplayAlert("Error!", $"Unable to get players: {ex.Message}", "OK");
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+
+
+
+
 }

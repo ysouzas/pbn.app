@@ -43,4 +43,11 @@ public class PlayerService : IPlayerService
 
         return player;
     }
+
+    public async Task<string> GetRanking()
+    {
+        var ranking = await repository.GetRanking();
+
+        return ranking;
+    }
 }

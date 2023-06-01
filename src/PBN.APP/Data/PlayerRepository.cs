@@ -48,4 +48,11 @@ public class PlayerRepository : BaseHttpClient<Player>, IPlayerRepository
 
         return player;
     }
+
+    public async Task<string> GetRanking()
+    {
+        var player = await GetAsync<string>(ConnectionStringConstants.Ranking);
+
+        return player;
+    }
 }

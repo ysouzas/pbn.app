@@ -11,5 +11,6 @@ public interface IPlayerRepository : IRepository<Player>
 
     Task<Player> AddPlayer(AddPlayerDTO dto);
 
-    
+    Task<string> GetRanking();
+
 }

@@ -9,12 +9,6 @@
 
     <StackLayout>
         <VerticalStackLayout>
-            <Label 
-                    TextColor="White"
-                    FontAttributes="Bold"
-                    Text="{Binding Player.Name}" 
-                    HorizontalOptions="Center"
-                    Margin="0,0,0,8"/>
 
             <Entry x:Name="name"
                    Placeholder="Add new name"
@@ -22,10 +16,10 @@
                    IsVisible="{Binding IsVisible}"
                    Text="{Binding Name}"
                    />
-            
+
             <Entry x:Name="rank"
                    Placeholder="Add new Rank"
-                   Keyboard="Numeric"
+                   Keyboard="Text"
                    Text="{Binding Score}"
                    />
 
@@ -59,8 +53,13 @@
                                 <VerticalStackLayout Grid.Column="1"
                                                      Padding="10"
                                                      VerticalOptions="Center">
-                                    <Label Text="{Binding Score, StringFormat='Score: {0}'}" />
-                                    <Label Text="{Binding Date, StringFormat='Date: {0}'}" />
+                                    <Label Text="{Binding Score, StringFormat='Score: {0}'}"
+                                   FontSize="18"
+                                   TextColor="White"/>
+
+                                    <Label Text="{Binding Date, StringFormat='Date: {0:dd/MM/yyyy}'}"
+                                   FontSize="16"
+                                   TextColor="White"/>
                                 </VerticalStackLayout>
                             </Grid>
                         </Border>

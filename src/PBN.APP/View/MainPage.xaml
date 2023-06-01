@@ -58,7 +58,13 @@
                 Grid.Column="0"
                 Margin="8"/>
 
-       
+        <Button Text="Ranking"
+                Command="{Binding RankingCommand}"
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="8"/>
+
+
         <ActivityIndicator IsVisible="{Binding IsLoading}" 
                            IsRunning="{Binding IsLoading}"
                            HorizontalOptions="FillAndExpand" 
