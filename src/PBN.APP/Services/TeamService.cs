@@ -1,6 +1,6 @@
 ﻿using PBN.APP.Data.Interfaces;
 using PBN.APP.Services.Interfaces;
-using PBN.Models;
+using PBN.APP.Models;
 
 namespace PBN.APP.Services;
 

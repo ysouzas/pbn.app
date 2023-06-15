@@ -4,7 +4,7 @@ using PBN.APP.Data.Base;
 using PBN.APP.Data.Interfaces;
 using PBN.APP.DTO.Request;
 using PBN.APP.Extensions;
-using PBN.Models;
+using PBN.APP.Models;
 
 namespace PBN.APP.Data;
 

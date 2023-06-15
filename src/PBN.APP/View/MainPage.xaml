@@ -5,7 +5,7 @@
              xmlns:viewmodel="clr-namespace:PBN.APP.ViewModel"
              x:DataType="viewmodel:PlayersViewModel"
              Title="{Binding Title}"
-             xmlns:model="clr-namespace:PBN.Models;assembly=PBN.Models">
+             xmlns:model="clr-namespace:PBN.APP.Models">
 
     <Grid  ColumnDefinitions="*,*"
             ColumnSpacing="5"

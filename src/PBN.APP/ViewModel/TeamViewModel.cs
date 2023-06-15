@@ -3,7 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using PBN.APP.Services;
 using PBN.APP.Services.Interfaces;
 using PBN.APP.ViewModel.Base;
-using PBN.Models;
+using PBN.APP.Models;
 
 namespace PBN.APP.ViewModel;
 

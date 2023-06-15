@@ -1,10 +1,10 @@
-﻿namespace PBN.Models;
+﻿namespace PBN.APP.Models;
 
 public class Rank
 {
     public Rank()
     {
-        
+
     }
 
     public Rank(decimal score)

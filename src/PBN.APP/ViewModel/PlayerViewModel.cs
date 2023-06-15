@@ -4,7 +4,7 @@ using PBN.APP.DTO.Request;
 using PBN.APP.Services.Interfaces;
 using PBN.APP.View;
 using PBN.APP.ViewModel.Base;
-using PBN.Models;
+using PBN.APP.Models;
 
 namespace PBN.APP.ViewModel;
 

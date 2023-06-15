@@ -1,4 +1,4 @@
-﻿using PBN.Models;
+﻿using PBN.APP.Models;
 
 namespace PBN.APP.Data.Interfaces;
 

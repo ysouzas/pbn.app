@@ -1,4 +1,4 @@
-﻿namespace PBN.Models;
+﻿namespace PBN.APP.Models;
 
 public class Team
 {

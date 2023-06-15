@@ -1,5 +1,5 @@
 ﻿using PBN.APP.DTO.Request;
-using PBN.Models;
+using PBN.APP.Models;
 
 namespace PBN.APP.Services.Interfaces;
 
